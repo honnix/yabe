@@ -3,5 +3,6 @@
 /lib
 /test-result
 /logs
-.idea
+/.idea
 *.iml
+/out

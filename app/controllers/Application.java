@@ -56,5 +56,10 @@ public class Application extends Controller {
 
         renderBinary(captcha);
     }
+    
+    public static void listTagged(String tag) {
+        List<Post> posts = Post.findTaggedWith(tag);
+        render(tag, posts);
+    }
 
 }

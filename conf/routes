@@ -12,7 +12,10 @@ GET     /favicon.ico                            404
 GET     /public/                                staticDir:public
 
 # Show post
-GET     /posts/{id}                             Application.show
+GET     /posts/{<[0-9]+>id}                     Application.show
+
+# Show tag
+GET     /posts/{tag}                            Application.listTagged
 
 # Post comment
 POST    /posts/{postId}/comments                Application.postComment

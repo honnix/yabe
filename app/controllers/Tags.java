@@ -1,5 +1,5 @@
 /**
- * Created : 12.04, 2011
+ * Created : 12.12, 2011
  *
  * Copyright : (C) 2011 by Honnix
  * Email     : hxliang1982@gmail.com
@@ -17,41 +17,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package models;
-
-import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-
-import play.data.validation.MaxSize;
-import play.data.validation.Required;
-import play.db.jpa.Model;
+package controllers;
 
 /**
  * @author honnix
  */
-@Entity
-public class Comment extends Model {
-    @Required
-    public String author;
-
-    @Required
-    public Date postedAt;
-
-    @Lob
-    @Required
-    @MaxSize(500)
-    public String content;
-
-    @ManyToOne
-    @Required
-    public Post post;
-
-    public Comment(Post post, String author, String content) {
-        this.post = post;
-        this.author = author;
-        this.content = content;
-        this.postedAt = new Date();
-    }
+public class Tags extends CRUD {
 }

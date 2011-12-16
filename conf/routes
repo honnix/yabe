@@ -2,7 +2,11 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# Import secure routes
+*       /                                       module:secure
+
 # Import CRUD routes
+GET     /admin/?                                Admin.index
 *       /admin                                  module:crud
 
 # Home page

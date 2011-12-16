@@ -21,8 +21,14 @@ GET     /public/                                staticDir:public
 # Show post
 GET     /posts/{<[0-9]+>id}                     Application.show
 
-# Show tag  
+# Show tag
 GET     /posts/{tag}                            Application.listTagged
+
+# Write/Show post
+GET     /admin/myPosts/{id}                     Admin.form
+GET     /admin/new                              Admin.form
+POST    /admin/myPosts/{id}                     Admin.save
+POST    /admin/new                              Admin.save
 
 # Post comment
 POST    /posts/{postId}/comments                Application.postComment

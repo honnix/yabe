@@ -31,13 +31,16 @@ public class Application extends Controller {
         String randomID = Codec.UUID();
         render(post, randomID);
     }
-    
+
     public static void postComment(Long postId, @Required(message = "Author is required") String author,
                                    @Required(message = "Message is required") String content,
                                    @Required(message = "Please type the code") String code, String randomID) {
         Post post = Post.findById(postId);
 
-        validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again.");
+        if (!Play.id.equals("test")) {
+            System.out.println("i am not in test mode");
+            validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again.");
+        }
         if (Validation.hasErrors()) {
             render("Application/show.html", post, randomID);
         }
@@ -56,7 +59,7 @@ public class Application extends Controller {
 
         renderBinary(captcha);
     }
-    
+
     public static void listTagged(String tag) {
         List<Post> posts = Post.findTaggedWith(tag);
         render(tag, posts);
